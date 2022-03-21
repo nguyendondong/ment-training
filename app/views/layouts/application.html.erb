@@ -20,7 +20,6 @@
       <%= link_to "Vietnamese", locale:"vi" %>  
 
   </div>
-  
     <% if current_user %>
         <%= link_to t('sign_out'), user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
     <% else %>
