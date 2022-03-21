@@ -10,5 +10,5 @@
   <%= @post.status %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post),class: "btn btn-primary text-white" %> 
-<%= link_to 'Back', posts_path ,class: "btn btn-primary text-white " %>
+<%= link_to t('edit'), edit_post_path(@post),class: "btn btn-primary text-white" %> 
+<%= link_to t('back'), posts_path ,class: "btn btn-primary text-white " %>

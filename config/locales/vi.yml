@@ -13,14 +13,9 @@ vi:
       sign_up: 'Đăng kí'
       sign_in: 'Đăng nhập'
       post: 'Bài viết'
+      back: "Quay lại "
       helpers:
             submit:
-            post:
-            create: " Tạo %{model}"
-            devise:
-            sessions:
-            signed_out: 'Đăng xuất thành công '
-            signed_up: 'Đăng kí thành công'
-            signed_in: 'Đăng nhập thành công'
-
+                  post:
+                  create: " Tạo %{model}"
 
