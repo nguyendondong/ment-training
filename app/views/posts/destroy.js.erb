@@ -1,0 +1,5 @@
+$('.destroypost').bind('ajax:success', function() {
+  console.log(this);
+  console.log($(this).closest('tr'));
+  $(this).closest('tr').remove()
+});

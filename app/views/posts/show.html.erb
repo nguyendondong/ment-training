@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p class="p-3 mb-2 bg-primary text-white">
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p class="p-3 mb-2 bg-success text-white">
+  <strong>Status:</strong>
+  <%= @post.status %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post),class: "btn btn-primary text-white" %> 
+<%= link_to 'Back', posts_path ,class: "btn btn-primary text-white " %>
