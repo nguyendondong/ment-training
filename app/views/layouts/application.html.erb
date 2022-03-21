@@ -15,7 +15,7 @@
 
   <body>
   </div>
-    <% if current_user%>
+    <% if current_user %>
         <%= link_to 'Sign Out', user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
     <% else %>
         <%= link_to 'Sign Up', new_user_registration_path,class: "btn btn-primary text-white" %>
