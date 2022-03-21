@@ -14,12 +14,18 @@
   </head>
 
   <body>
+  </div> 
+  <div class="text-right">
+      <%= link_to "English", locale:"en" %>
+      <%= link_to "Vietnamese", locale:"vi" %>  
+
   </div>
+  
     <% if current_user %>
-        <%= link_to 'Sign Out', user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
+        <%= link_to t('sign_out'), user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
     <% else %>
-        <%= link_to 'Sign Up', new_user_registration_path,class: "btn btn-primary text-white" %>
-        <%= link_to 'Sign in',user_signin_path,class: "btn btn-success text-white" %>
+        <%= link_to t('sign_up'), new_user_registration_path,class: "btn btn-primary text-white" %>
+        <%= link_to t('sign_in'),user_signin_path,class: "btn btn-success text-white" %>
     <% end %>
     <%= yield %>
   </body>

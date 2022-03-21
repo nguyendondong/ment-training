@@ -1,0 +1,26 @@
+vi:
+      user: 'Người dùng'
+      name: 'Tên'
+      email: 'Địa chỉ mail'
+      show: 'Xem chi tiết'
+      edit: 'Chinh sửa'
+      destroy: 'Xóa'
+      new_user: 'Thêm người dùng'
+      date: 'Ngày tạo'
+      status: 'Trạng thái'
+      actions: 'Hành động'
+      sign_out: 'Đăng xuất'
+      sign_up: 'Đăng kí'
+      sign_in: 'Đăng nhập'
+      post: 'Bài viết'
+      helpers:
+            submit:
+            post:
+            create: " Tạo %{model}"
+            devise:
+            sessions:
+            signed_out: 'Đăng xuất thành công '
+            signed_up: 'Đăng kí thành công'
+            signed_in: 'Đăng nhập thành công'
+
+
