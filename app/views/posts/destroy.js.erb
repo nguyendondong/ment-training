@@ -1,5 +1,11 @@
 $('.destroypost').bind('ajax:success', function() {
   console.log(this);
   console.log($(this).closest('tr'));
-  $(this).closest('tr').remove()
+  $(this).closest('tr').remove();
+    <%# $console.log(@post); %>
+    $("#notice").html('<div class="alert alert-success w-4"><strong><%= t('destroy')%> <%= t('success')%> !</strong></div>');
+     setTimeout( function() {
+        $("#notice").hide();
+    }, 3000)
+ 
 });

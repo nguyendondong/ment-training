@@ -2,4 +2,9 @@
 $("#post_list").append("<%= escape_javascript(render partial: 'post', locals: { post: @post } ) %>").promise().done(function(){
     <%# $console.log(@post); %>
     console.log('<%= @post.name %>');
+    $("#notice").html('<div class="alert alert-success"><strong><%= t('success')%>!</strong></div>');
+     setTimeout( function() {
+        $("#notice").hide();
+    }, 5000)
+       
 })
