@@ -20,6 +20,9 @@
     <%= form.label :status , class: "pr-2"%>
     <%= form.text_field :status %>
   </div>
+  <div class="picture mb-3">
+        	<%= form.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+  </div>
 
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>

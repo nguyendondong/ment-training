@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p class="p-3 mb-2 bg-primary text-white">
-  <strong>Name:</strong>
+<div class="p-3 mb-2 bg-primary text-white">
+  <strong>N<%= t ("name") %>:</strong>
   <%= @post.name %>
-</p>
+</div>
 
-<p class="p-3 mb-2 bg-success text-white">
-  <strong>Status:</strong>
+<div class="p-3 mb-2 bg-success text-white">
+  <strong><%=t ("status") %>:</strong>
   <%= @post.status %>
-</p>
+</div>
+<div class="p-3 mb-2 bg-success text-white">
+  <strong><%=t ("picture")%>:</strong>
+  <%= image_tag @post.picture.url if @post.picture? %>
+</div>
 
 <%= link_to t('edit'), edit_post_path(@post),class: "btn btn-primary text-white" %> 
 <%= link_to t('back'), posts_path ,class: "btn btn-primary text-white " %>

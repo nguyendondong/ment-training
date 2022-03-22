@@ -56,3 +56,4 @@ gem 'devise'
 gem "paperclip", "~> 5.1"
 gem 'annotate', '~> 3.2'
 gem 'i18n', '~> 1.10'
+gem "carrierwave"

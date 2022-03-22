@@ -4,6 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  picture    :string
+#  pictures   :json
 #  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

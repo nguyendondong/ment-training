@@ -4,6 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  picture    :string
+#  pictures   :json
 #  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -19,4 +21,7 @@
 #
 class Post < ApplicationRecord
     belongs_to:user 
+    mount_uploader :picture, PictureUploader
+    mount_uploader :pictures, PictureUploader
+
 end

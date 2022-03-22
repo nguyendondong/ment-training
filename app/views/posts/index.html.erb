@@ -7,6 +7,7 @@
     <tr>
       <th scope="col"><%= t ("name") %></th>
       <th scope="col" ><%=t ("status") %> </th>
+      <th scope="col" ><%=t ("picture") %> </th>
       <th colspan="3" ><%=t ("actions") %></th>
     </tr>
   </thead>
@@ -29,11 +30,23 @@
     <%= form.label (t :status) , class: "pr-2"%>
     <%= form.text_field :status %>
   </div>
+   <div class="picture mb-3">
+        	<%= form.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+  </div>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
 <% end %>
+
+<script type="text/javascript">
+	$("#micropost_picture").bind("change", function(){
+    	var size_in_megabytes = this.files(0).size/1024/1024;
+        if (size_in_megabytes > 1) {
+        	alert("Maximum file size is 1MB. Please choose an other file!");
+        }
+    });
+</script>
 
 
 
