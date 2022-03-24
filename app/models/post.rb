@@ -23,5 +23,16 @@ class Post < ApplicationRecord
     belongs_to:user 
     mount_uploader :picture, PictureUploader
     mount_uploader :pictures, PictureUploader
+    
 
+    class << self
+      def import file
+        posts_attributes = []
+        CSV.foreach(file.path, headers: true, col_sep: " ", header_converters: :symbol) do |row|
+          row = row.to_hash
+          Post.create! row 
+        end
+      end
+    end
+    
 end

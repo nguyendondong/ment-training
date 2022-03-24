@@ -23,6 +23,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    has_many:posts
+    has_many:posts , dependent: :destroy, inverse_of: :user
     has_and_belongs_to_many :events
+    accepts_nested_attributes_for :posts, allow_destroy: true,
+    reject_if: proc{|attributes| attributes["name"].blank?}
+
+    
+ 
 end

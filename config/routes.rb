@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   
   scope "(:locale)", locale: /en|vi/ do
   resources :users
-  resources :posts
-
+  resources :posts 
   end
+  resources :csv, only: [:create]
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register' }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

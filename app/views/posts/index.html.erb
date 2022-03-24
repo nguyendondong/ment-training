@@ -37,6 +37,11 @@
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+ <h3>Import Post</h3>
+ <%= form_tag csv_index_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Post" %>
+<% end %>
 <% end %>
 
 <script type="text/javascript">
