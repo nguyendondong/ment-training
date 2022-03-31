@@ -1,0 +1,9 @@
+
+      <tr id='tag_<%=post.id%>'>
+        <td><%= post.name %></td>
+        <td><%= post.status %></td>
+        <td><%= image_tag post.picture.url if post.picture? %></td>
+        <td><%= link_to t('show'), admin_posts_path,class: "btn btn-primary text-white" %></td>
+        <td><%= link_to t('edit'), edit_admin_post_path(post),class: "btn btn-success text-white" %></td>
+        <td><%= link_to t('destroy'), admin_posts_path, data: { confirm: 'Are you sure?' } ,remote: :true, method: :delete,class: "btn btn-danger text-white destroypost "  %></td>
+      </tr>

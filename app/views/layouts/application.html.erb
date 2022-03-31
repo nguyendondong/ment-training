@@ -20,12 +20,25 @@
       <%= link_to "Vietnamese", locale:"vi" %>  
 
   </div>
+  <div>
     <% if current_user %>
         <%= link_to t('sign_out'), user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
     <% else %>
         <%= link_to t('sign_up'), new_user_registration_path,class: "btn btn-primary text-white" %>
         <%= link_to t('sign_in'),user_signin_path,class: "btn btn-success text-white" %>
     <% end %>
+    <% unless flash.empty? %>
+   <script type="text/javascript">
+      <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+   	 toastr['<%= type %>']('<%= f[1] %>');
+   <% end %>
+   </script>
+  <% end %>
+    </div>
+    <div class = "container-fluid">
     <%= yield %>
+    </div>
+    
   </body>
 </html>

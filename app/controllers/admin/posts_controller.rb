@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Admin::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!, :only => [:index]
   before_action :check_link
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
       return  root_path 
     end
   end
+
   # GET /posts or /posts.json
   def index
     @posts = Post.all

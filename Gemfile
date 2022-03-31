@@ -58,3 +58,7 @@ gem 'annotate', '~> 3.2'
 gem 'i18n', '~> 1.10'
 gem "carrierwave"
 gem 'csv', '~> 3.0'
+gem 'cancancan', '~> 3.3'
+gem 'toastr-rails'
+gem 'jquery-rails'
+gem 'bootstrap-sass'

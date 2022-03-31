@@ -6,6 +6,7 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.hidden_field :role_id, value: 2 %>
   </div>
 
   <div class="field">
@@ -19,6 +20,7 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    
   </div>
 
   <div class="actions">

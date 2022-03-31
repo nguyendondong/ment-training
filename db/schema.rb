@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_123220) do
+ActiveRecord::Schema.define(version: 2022_03_29_161639) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -36,10 +36,18 @@ ActiveRecord::Schema.define(version: 2022_03_22_123220) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "destription"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'password' for column 'password'
+#   Unknown type '' for column 'password'
 
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "roles"
 end

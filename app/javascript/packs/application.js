@@ -7,6 +7,12 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+global.toastr = require("toastr")
+import "../stylesheets/application"
+// app/asssets/javascripts/application.js
+//= require jquery
+//= require jquery_ujs
+//= require toastr
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,11 +21,9 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-$(document).ready(function() {
-    $('#new_post').on(
-      'click',
-      function() {
-        greet_user('Dire', 'Strait');
-      }
-    );
-  });
+	$("#micropost_picture").bind("change", function(){
+    	var size_in_megabytes = this.files(0).size/1024/1024;
+        if (size_in_megabytes > 1) {
+        	alert("Maximum file size is 1MB. Please choose an other file!");
+        }
+    });

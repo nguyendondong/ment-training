@@ -7,6 +7,7 @@
       <th scope="col"><%= t ("name") %></th>
       <th scope="col" ><%=t ("status") %> </th>
       <th scope="col" ><%=t ("picture") %> </th>
+      <th colspan="3" ><%=t ("actions") %></th>
     </tr>
   </thead>
 
@@ -19,7 +20,7 @@
 
 <br>
 <% if current_user %>
-<%= form_for(root_path, remote: true) do |form| %>
+<%= form_for(admin_posts_path(@post), remote: true) do |form| %>
  <div class="input-group mb-3">
     <%= form.label (t :name) ,class: "pr-2"%>
     <%= form.text_field :name %>
