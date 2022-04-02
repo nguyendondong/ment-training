@@ -1,0 +1,25 @@
+<p id="notice" class = "pt-3"><%= notice %></p>
+<h1><%= t ("post") %></h1>
+
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col"><%= t ("name") %></th>
+      <th scope="col" ><%=t ("status") %> </th>
+      <th scope="col" ><%=t ("picture") %> </th>
+    </tr>
+  </thead>
+
+  <tbody id="post_list">
+     <% @posts.each do |post| %>
+    <%= render partial: "post",locals: { post: post }  %>
+    <%end%>
+  </tbody>
+</table>
+
+
+
+
+
+<%# <%= button_to 'New Post', new_post_path,class: "btn btn-success text-white" ,id:"new_post"  %>
+

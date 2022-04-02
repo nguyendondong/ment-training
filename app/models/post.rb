@@ -22,7 +22,7 @@
 class Post < ApplicationRecord
     belongs_to:user 
     mount_uploader :picture, PictureUploader
-    mount_uploader :pictures, PictureUploader
+    mount_uploaders :pictures, PictureUploader
     
 
     class << self

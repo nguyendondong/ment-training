@@ -1,0 +1,30 @@
+<%= form_with(model: post, local: true,remote:true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group mb-3">
+    <%= form.label :name ,class: "pr-2"%>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form.label :status , class: "pr-2"%>
+    <%= form.text_field :status %>
+  </div>
+  <div class="picture mb-3">
+        	<%= form.file_field :picture, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

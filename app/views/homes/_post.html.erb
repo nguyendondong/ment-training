@@ -1,0 +1,6 @@
+
+      <tr id='tag_<%=post.id%>'>
+        <td><%= link_to post.name,post_path(post) %></td>
+        <td><%= post.status %></td>
+        <td><%= image_tag post.picture.url if post.picture? %></td>
+      </tr>

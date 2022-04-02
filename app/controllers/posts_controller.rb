@@ -1,13 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, :only => [:index]
-  before_action :check_link
-
-  def check_link
-    if current_user.role.name != "admin"
-      return  root_path 
-    end
-  end
+  skip_before_action :authenticate_user!, :only => [:index,:show]
   # GET /posts or /posts.json
   def index
     @posts = Post.all

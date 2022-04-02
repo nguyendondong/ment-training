@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_29_161639) do
+ActiveRecord::Schema.define(version: 2022_04_02_155935) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2022_03_29_161639) do
     t.string "picture"
     t.json "pictures"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "sku"
+    t.string "description"
+    t.text "meta_description"
+    t.string "meta_keywords"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.json "pictures"
   end
 
   create_table "roles", force: :cascade do |t|

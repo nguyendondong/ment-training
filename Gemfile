@@ -56,7 +56,7 @@ gem 'devise'
 gem "paperclip", "~> 5.1"
 gem 'annotate', '~> 3.2'
 gem 'i18n', '~> 1.10'
-gem "carrierwave"
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'csv', '~> 3.0'
 gem 'cancancan', '~> 3.3'
 gem 'toastr-rails'
