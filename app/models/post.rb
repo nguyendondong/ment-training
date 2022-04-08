@@ -28,7 +28,7 @@ class Post < ApplicationRecord
     class << self
       def import file
         posts_attributes = []
-        CSV.foreach(file.path, headers: true, col_sep: " ", header_converters: :symbol) do |row|
+        CSV.foreach(file.path, headers: true, col_sep: ",", header_converters: :symbol) do |row|
           row = row.to_hash
           Post.create! row 
         end

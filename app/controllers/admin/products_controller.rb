@@ -1,9 +1,11 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-
+  include ApplicationHelper
+  before_action :check_link
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @search = Product.ransack(params[:q])
+    @products = @search.result.page(params[:page])
   end
 
   # GET /products/1 or /products/1.json
@@ -51,7 +53,7 @@ class Admin::ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+      format.html { redirect_to admin_path, notice: "Product was successfully destroyed." }
       format.json { head :no_content }
     end
   end

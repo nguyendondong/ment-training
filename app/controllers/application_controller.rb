@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     before_action :set_locale
     before_action :authenticate_user!
     
-    
     def set_locale
       locale = params[:locale].to_s.strip.to_sym
       I18n.locale = I18n.available_locales.include?(locale) ?
@@ -33,9 +32,10 @@ class ApplicationController < ActionController::Base
     protected
    
     def configure_permitted_parameters
-      added_attrs = [:name, :email, :password, :password_confirmation, :remember_me,:role_id]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+      sign_up = [:name, :email, :password, :password_confirmation, :remember_me,:role_id]
+      account_update = [:name, :email, :password, :password_confirmation, :remember_me]
+      devise_parameter_sanitizer.permit :sign_up, keys: sign_up
+      devise_parameter_sanitizer.permit :account_update, keys: account_update
     end
   end
   
