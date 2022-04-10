@@ -9,6 +9,7 @@ class Devise::RegistrationsController < DeviseController
       roles = Role.pluck(:name)
       if roles.empty?
         Role.create(name: "admin")
+        Role.create(name: "manager")
         Role.create(name: "user")
       end
     end
