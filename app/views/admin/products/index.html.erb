@@ -1,5 +1,4 @@
 
-<p id="notice"><%= notice %></p>
 <%= search_form_for [:admin,@search], class: "form-inline" do |f| %>
 	<div class="form-group">
         <%= f.text_field :name_cont, class: "form-control" %><br>
@@ -30,9 +29,11 @@
         <td><%= product.meta_keywords %></td>
         <td >
         <%if product.pictures? %>
-        <%product.pictures.each do |p| %>
-        <%= image_tag p.url ,class: 'list_image'%>
+        <div class = "row">
+        <%product.pictures.first(6).each do |p| %>
+        <%= image_tag p.url ,class: 'list_image col-lg-1 col-3 mb-2'%>
         <% end %>
+         </div>
         <% end %>
         </td>
         <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>

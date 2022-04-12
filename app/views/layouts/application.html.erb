@@ -26,8 +26,19 @@
   <div class="text-right">
     <%= link_to "English", locale:"en" %>
     <%= link_to "Vietnamese", locale:"vi" %>
+    </div>
+     <% if current_user %>
+      <div class ="log_button">
+        <%= button_to t('sign_out'), user_signout_path,method: :delete,class: "btn btn-danger text-white destroypost "  %>
+      </div>
+    <% else %>
+     <div class ="log_button">
+        <%= link_to t('sign_up'), new_user_registration_path,class: "btn btn-primary text-white" %>
+        <%= link_to t('sign_in'),user_signin_path,class: "btn btn-success text-white" %>
+      </div>
+    <% end %>
 
-  </div>
+ 
     <%= yield %>
 
 </body>

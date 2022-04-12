@@ -1,0 +1,35 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @product.sku %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Meta description:</strong>
+  <%= @product.meta_description %>
+</p>
+
+<p>
+  <strong>Meta keywords:</strong>
+  <%= @product.meta_keywords %>
+</p>
+<div>
+  <strong>Pictures:</strong>
+    <%if @product.pictures? %>
+  <% @product.pictures.each do |p| %>
+  <%=image_tag p.url%>
+  <% end %>
+  <% end%>
+</div>
+
