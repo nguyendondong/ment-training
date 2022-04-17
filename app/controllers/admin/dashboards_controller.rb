@@ -1,8 +1,9 @@
 class Admin::DashboardsController < ApplicationController
     include ApplicationHelper
+    layout :dynamic_layout  
     before_action :check_link
     def index
-        # @products = Product.all.page(params[:page]).per(10)
+        
     end
 
     

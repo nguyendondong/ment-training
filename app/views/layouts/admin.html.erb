@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dondong</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <!-- Theme style -->
+  <%= stylesheet_link_tag 'admin',"admin"%>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body class="container-fluid">
+  </div>
+  <div class="text-right">
+    <%= link_to "English", locale:"en" %>
+    <%= link_to "Vietnamese", locale:"vi" %>
+    </div>
+
+     <%= render 'admin/shared/navbar' %>
+     <%= render 'admin/shared/main_sidebar' %>
+    <%= yield %>
+    <%= render 'admin/shared/footer' %>
+
+</body>
+
+</html>

@@ -7,4 +7,11 @@ module ApplicationHelper
           redirect_to  root_path 
         end
       end
+      def dynamic_layout
+        if is_admin?
+          "admin"
+        else
+          "application"
+        end
+      end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_155935) do
+ActiveRecord::Schema.define(version: 2022_04_15_134226) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -47,9 +47,24 @@ ActiveRecord::Schema.define(version: 2022_04_02_155935) do
     t.json "pictures"
   end
 
+  create_table "products_taxons", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "taxon_id", null: false
+    t.index ["product_id"], name: "index_products_taxons_on_product_id"
+    t.index ["taxon_id"], name: "index_products_taxons_on_taxon_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name", default: "user"
     t.string "destription"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "taxons", force: :cascade do |t|
+    t.string "name"
+    t.string "meta_title"
+    t.string "meta_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -60,5 +75,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_155935) do
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "products_taxons", "products"
+  add_foreign_key "products_taxons", "taxons"
   add_foreign_key "users", "roles"
 end

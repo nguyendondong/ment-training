@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :posts 
       resources :users
-      get '/', to: 'products#index'
+      get '/', to: 'dashboards#index'
       concern :paginatable do
         get '(page/:page)', action: :index, on: :collection, as: ''
       end

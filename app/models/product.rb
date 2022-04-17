@@ -15,6 +15,7 @@
 class Product < ApplicationRecord
     mount_uploaders :pictures, PictureUploader
     serialize :pictures
+    has_and_belongs_to_many :taxons
 
     class << self
         def import file

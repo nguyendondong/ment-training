@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
   include ApplicationHelper
+  layout :dynamic_layout
+  before_action :set_product, only: %i[ show edit update destroy ]
   before_action :check_link
   # GET /products or /products.json
   def index
@@ -65,6 +66,7 @@ class Admin::ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])
     end
+   
 
     # Only allow a list of trusted parameters through.
     def product_params
