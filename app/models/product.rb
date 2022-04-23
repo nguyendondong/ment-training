@@ -15,7 +15,8 @@
 class Product < ApplicationRecord
     mount_uploaders :pictures, PictureUploader
     serialize :pictures
-    has_and_belongs_to_many :taxons
+    has_and_belongs_to_many :taxons,join_table: 'products_taxons'
+    has_many :variants
 
     class << self
         def import file

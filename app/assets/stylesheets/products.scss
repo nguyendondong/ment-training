@@ -1,3 +1,52 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.quantity-area{
+    width: 150px;
+    float: left;
+    .qty-btn{
+        float: left;
+        background: #f3f4f4;
+        border: solid 1px #f3f4f4;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        outline: none;
+        height: 45px;
+        line-height: 45px;
+        width: 45px;
+        text-align: center;
+        border-radius: 0;
+    }
+    .quantity-input{
+    background: #fff;
+    font-weight: 600;
+    height: 45px;
+    line-height: 45px;
+    width: 60px;
+    padding: 0;
+    text-align: center;
+    border: 1px solid #f3f4f4;
+    border-left: none;
+    border-right: none;
+    border-radius: 1px;
+    float: left;
+    }
+   
+}
+.cart_area{
+    width: calc(100% - 150px);
+    float: left;
+    padding-left: 15px;
+    .add_cart{
+        width: 49%;
+        height: 45px;
+        line-height: 45px;
+        padding: 0 15px;
+        outline: none;
+        font-weight: 600;
+        font-size: 15px;
+        
+    }
+}

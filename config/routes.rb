@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         get '(page/:page)', action: :index, on: :collection, as: ''
       end
       resources :products , concerns: :paginatable
+      resources :taxons , concerns: :paginatable
       post '/csv/create_post', to: 'csv#create_post'
       post '/csv/create_product', to: 'csv#create_product'
     end

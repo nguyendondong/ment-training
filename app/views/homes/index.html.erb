@@ -1,4 +1,4 @@
-<div class = "container">
+
   <section class="flex-container" id="header">
     <div class="navbar navbar-light bg-light">
       <div class="nav-item dropdown">
@@ -116,11 +116,15 @@
           <div class = "product-loop ">
               <%= image_tag product.pictures.first.url,:class => "w-100" if product.pictures? %>
               <%=link_to  product.name ,product_path(product), :class => "name"  %>
+
+              <div class = "add_cart">
+                 <%= link_to 'Add to Cart',product_path(product) , :class => "btn btn-warning "%> 
           </div>
+          </div>
+          
         </div>
         <% end %>
       </div>
 
     </div>
   </section>
-</div>

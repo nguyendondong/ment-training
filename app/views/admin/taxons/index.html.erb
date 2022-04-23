@@ -1,0 +1,32 @@
+<div class = "d-flex  form_search pb-3">
+<%= search_form_for [:admin,@search], class: "form-inline" do |f| %>
+	<div class="form-group">
+        <%= f.text_field :name_cont, class: "form-control" %><br>
+    </div> <!-- Tìm kiếm theo name có chứa ... -->
+    <%= f.submit 'Search', class: "btn btn-default" %>
+<% end %>
+<%= link_to 'New Taxon', new_admin_taxon_path,class: "btn btn-success text-white" ,id:"new_taxon"  %>
+</div>
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col"><%=t ("name") %></th>
+      <th scope="col"><%=t ("meta_title") %></th>
+      <th scope="col"><%=t ("meta_description") %></th>
+      <th colspan="3"><%=t ("actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= paginate @taxons, theme: 'twitter-bootstrap-3' %>
+    <% @taxons.each do |taxon| %>
+      <tr>
+        <td><%= taxon.name %></td>
+        <td><%= taxon.meta_title %></td>
+        <td><%= taxon.meta_description %></td>
+        <td><%= link_to 'Edit', edit_admin_taxon_path(taxon) ,:class => "btn btn-success text-white" %></td>
+        <td><%= button_to 'Destroy', admin_taxon_path(taxon), method: :delete, data: { confirm: 'Are you sure?' },:class  => "btn btn-danger text-white" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_15_134226) do
+ActiveRecord::Schema.define(version: 2022_04_23_130657) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2022_04_15_134226) do
     t.string "picture"
     t.json "pictures"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.string "amount"
+    t.integer "variant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["variant_id"], name: "index_prices_on_variant_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -72,10 +80,23 @@ ActiveRecord::Schema.define(version: 2022_04_15_134226) do
 # Could not dump table "users" because of following StandardError
 #   Unknown type '' for column 'password'
 
+  create_table "variants", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.string "sku"
+    t.string "color"
+    t.string "size"
+    t.string "cost_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_variants_on_product_id"
+  end
+
   add_foreign_key "events_users", "events"
   add_foreign_key "events_users", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "prices", "variants"
   add_foreign_key "products_taxons", "products"
   add_foreign_key "products_taxons", "taxons"
   add_foreign_key "users", "roles"
+  add_foreign_key "variants", "products"
 end

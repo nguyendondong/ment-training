@@ -1,35 +1,56 @@
+<div class="row">
+  <div class="col-6">
+    <div class="p-3 mb-2">
+      <div>
+        <strong>Pictures:</strong>
 
+      </div>
+      <%if @product.pictures? %>
+      <% @product.pictures.each do |p| %>
+      <%=image_tag p.url%>
+      <% end %>
+      <% end%>
+    </div>
+  </div>
+  <div class="col-6">
+    <div>
+      <p>
+        <strong>Name:</strong>
+        <%= @product.name %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+      <p>
+        <strong>Sku:</strong>
+        <%= @product.sku %>
+      </p>
 
-<p>
-  <strong>Sku:</strong>
-  <%= @product.sku %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+      <p>
+        <strong>Meta description:</strong>
+        <%= @product.meta_description %>
+      </p>
 
-<p>
-  <strong>Meta description:</strong>
-  <%= @product.meta_description %>
-</p>
+      <p>
+        <strong>Meta keywords:</strong>
+        <%= @product.meta_keywords %>
+      </p>
 
-<p>
-  <strong>Meta keywords:</strong>
-  <%= @product.meta_keywords %>
-</p>
-<div>
-  <strong>Pictures:</strong>
-    <%if @product.pictures? %>
-  <% @product.pictures.each do |p| %>
-  <%=image_tag p.url%>
-  <% end %>
-  <% end%>
+    </div>
+    <div class = "d-flex">
+   <div class="quantity-area clearfix">
+											<input type="button" value="-" class="qty-btn">
+											<input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
+											<input type="button" value="+" onclick="HRT.All.plusQuantity()" class="qty-btn">
+										</div>
+    <div class="cart_area">
+      <%= link_to 'Add to Cart',product_path(@product) , :class => "btn btn-warning add_cart"%>
+      <%= link_to 'Add to Cart',product_path(@product) , :class => "btn btn-danger add_cart "%>
+    </div>
+
+    </div>
+  </div>
 </div>
-

@@ -1,10 +1,13 @@
 
+<div class = "d-flex  form_search">
 <%= search_form_for [:admin,@search], class: "form-inline" do |f| %>
 	<div class="form-group">
         <%= f.text_field :name_cont, class: "form-control" %><br>
     </div> <!-- Tìm kiếm theo name có chứa ... -->
     <%= f.submit 'Search', class: "btn btn-default" %>
 <% end %>
+<%= link_to 'New Product', new_admin_product_path,class: "btn btn-success text-white" ,id:"new_product"  %>
+</div>
 <table class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -13,6 +16,7 @@
       <th scope="col"><%=t ("description") %></th>
       <th scope="col"><%=t ("meta_description") %></th>
       <th scope="col"><%=t ("meta_keywords") %></th>
+      <th scope="col"><%=t ("taxons") %></th>
       <th scope="col"><%=t ("picture") %></th>
       <th colspan="3"><%=t ("actions") %></th>
     </tr>
@@ -27,23 +31,22 @@
         <td><%= product.description %></td>
         <td><%= product.meta_description %></td>
         <td><%= product.meta_keywords %></td>
+        <td><%= product.taxons.pluck(:name).join(', ')  if product.taxons.present? %></td>
         <td >
         <%if product.pictures? %>
         <div class = "row">
         <%product.pictures.first(6).each do |p| %>
-        <%= image_tag p.url ,class: 'list_image col-lg-1 col-3 mb-2'%>
+        <%= image_tag p.url ,class: 'list_image col-lg-2 col-3 mb-4'%>
         <% end %>
          </div>
         <% end %>
         </td>
-        <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-        <td><%= button_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_product_path(product),:class => "btn btn-success text-white" %></td>
+        <td><%= button_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' },:class  => "btn btn-danger text-white" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
 <br>
 <h3>Import Product</h3>
  <%= form_tag admin_csv_create_product_path, multipart: true do %>

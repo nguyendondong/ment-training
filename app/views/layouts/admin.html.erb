@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Dondong</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <!-- Theme style -->
-  <%= stylesheet_link_tag 'admin',"admin"%>
-
+<link rel="shortcut icon" href="assets\images\favicon.ico">
+  <%= stylesheet_link_tag '/adminlte/adminlte'%>
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -18,12 +17,16 @@
     <%= link_to "English", locale:"en" %>
     <%= link_to "Vietnamese", locale:"vi" %>
     </div>
-
+     <div id="wrapper">
      <%= render 'admin/shared/navbar' %>
      <%= render 'admin/shared/main_sidebar' %>
+     <div class="content-page">
+     <div class="content">       
     <%= yield %>
+    </div>
+    </div>
     <%= render 'admin/shared/footer' %>
-
+    </div>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("toastr")
+global.toastr = require("toastr")
 // app/asssets/javascripts/application.js
 //= require jquery
 //= require jquery_ujs

@@ -1,34 +1,48 @@
+<div class="row">
+  <div class="col-6">
+    <div class="p-3 mb-2">
+      <div>
+        <strong>Pictures:</strong>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+      </div>
+      <%if @product.pictures? %>
+      <% @product.pictures.each do |p| %>
+      <%=image_tag p.url%>
+      <% end %>
+      <% end%>
+    </div>
+  </div>
+  <div class="col-6">
+    <div>
+      <p>
+        <strong>Name:</strong>
+        <%= @product.name %>
+      </p>
 
-<p>
-  <strong>Sku:</strong>
-  <%= @product.sku %>
-</p>
+      <p>
+        <strong>Sku:</strong>
+        <%= @product.sku %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </p>
 
-<p>
-  <strong>Meta description:</strong>
-  <%= @product.meta_description %>
-</p>
+      <p>
+        <strong>Meta description:</strong>
+        <%= @product.meta_description %>
+      </p>
 
-<p>
-  <strong>Meta keywords:</strong>
-  <%= @product.meta_keywords %>
-</p>
-<div>
-  <strong>Pictures:</strong>
-    <%if @product.pictures? %>
-  <% @product.pictures.each do |p| %>
-  <%=image_tag p.url%>
-  <% end %>
-  <% end%>
+      <p>
+        <strong>Meta keywords:</strong>
+        <%= @product.meta_keywords %>
+      </p>
+      <p>
+        <strong>Taxons:</strong>
+        <%= @product.taxons.pluck(:name).join(",") %>
+      </p>
+
+    </div>
+  </div>
 </div>
-

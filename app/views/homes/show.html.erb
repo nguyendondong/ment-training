@@ -1,5 +1,15 @@
 
-<div class="p-3 mb-2 bg-primary text-white">
+
+
+<div class = "row">
+ <div class = "col-6">
+ <div class="p-3 mb-2 bg-success text-white">
+  <strong><%=t ("picture")%>:</strong>
+  <%= image_tag @post.picture.url if @post.picture? %>
+</div>
+ </div>
+ <div class = "col-6"> 
+ <div class="p-3 mb-2 bg-primary text-white">
   <strong>N<%= t ("name") %>:</strong>
   <%= @post.name %>
 </div>
@@ -8,7 +18,6 @@
   <strong><%=t ("status") %>:</strong>
   <%= @post.status %>
 </div>
-<div class="p-3 mb-2 bg-success text-white">
-  <strong><%=t ("picture")%>:</strong>
-  <%= image_tag @post.picture.url if @post.picture? %>
-</div>
+
+ </div>
+ </div>
