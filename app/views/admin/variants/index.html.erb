@@ -1,0 +1,6 @@
+    <%=link_to 'Create Variant',new_admin_product_variant_path(@product),:class => 'btn btn-success'%>
+    <div>
+    <% @variants.each do |variant| %>
+     <%= render 'form',variant:variant%>
+    <% end %>
+    </div>

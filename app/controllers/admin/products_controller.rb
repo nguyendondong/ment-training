@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   include ApplicationHelper
   layout :dynamic_layout
-  before_action :set_product, only: %i[ show edit update destroy get_variants ]
+  before_action :set_product, only: %i[ show edit update destroy  ]
   before_action :check_link
   # GET /products or /products.json
   def index
@@ -24,16 +24,6 @@ class Admin::ProductsController < ApplicationController
   def edit
     
   end
-
-  def get_variants
-    if @product.variants.count > 0
-       @variants= @product.variants
-    else
-      @variants= @product.variants.new
-    end
-
-  end
-
 
 
   # POST /products or /products.json
