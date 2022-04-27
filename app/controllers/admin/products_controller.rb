@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   include ApplicationHelper
   layout :dynamic_layout
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_product, only: %i[ show edit update destroy get_variants ]
   before_action :check_link
   # GET /products or /products.json
   def index
@@ -22,7 +22,19 @@ class Admin::ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    
   end
+
+  def get_variants
+    if @product.variants.count > 0
+       @variants= @product.variants
+    else
+      @variants= @product.variants.new
+    end
+
+  end
+
+
 
   # POST /products or /products.json
   def create
@@ -56,7 +68,7 @@ class Admin::ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_path, notice: "Product was successfully destroyed." }
+      format.html { redirect_to admin_products_path, notice: "Product was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -70,6 +82,6 @@ class Admin::ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :sku, :description, :meta_description, :meta_keywords,{taxon_ids:[]},{pictures:[]})
+      params.require(:product).permit(:name, :sku, :description, :meta_description, :meta_keywords,:price,{taxon_ids:[]},{pictures:[]},{remove_picture_ids:[]})
     end
 end

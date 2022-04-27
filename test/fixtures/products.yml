@@ -8,6 +8,7 @@
 #  meta_keywords    :string
 #  name             :string           not null
 #  pictures         :json
+#  price            :string
 #  sku              :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

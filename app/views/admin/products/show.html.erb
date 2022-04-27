@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-6">
+<div class="row p-5">
+  <div class="col-5">
     <div class="p-3 mb-2">
       <div>
         <strong>Pictures:</strong>
@@ -12,7 +12,7 @@
       <% end%>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-7">
     <div>
       <p>
         <strong>Name:</strong>
@@ -23,7 +23,10 @@
         <strong>Sku:</strong>
         <%= @product.sku %>
       </p>
-
+      <p>
+        <strong>Price:</strong>
+        <%= @product.price %>
+      </p>
       <p>
         <strong>Description:</strong>
         <%= @product.description %>

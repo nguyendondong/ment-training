@@ -1,0 +1,51 @@
+
+  <%= form_with(model: [:admin,@product,@variant], local: true) do |form| %>
+  <div class="row p-5">
+  <% if product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+    <ul>
+      <% product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="col-5">
+      <label>Pictures</label>
+      <div>
+      </div>
+    <div class = "pt-5">
+    <%= form.file_field :pictures, multiple: true%>
+    </div>
+  </div>
+  <div class="col-7">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :sku %>
+      <%= form.text_field :sku %>
+    </div>
+    <div class="field">
+      <%= form.label :cost_price %>
+      <%= form.text_field :cost_price %>
+    </div>
+
+    <div class="field">
+      <%= form.label :size %>
+      <%= form.text_field :size %>
+    </div>
+
+    <div class="field">
+      <%= form.label :color %>
+      <%= form.text_area :color %>
+    </div>
+
+    <div class="actions w-100 text-center">
+      <%= form.submit %>
+    </div>
+    <% end %>

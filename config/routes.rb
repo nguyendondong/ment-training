@@ -13,15 +13,22 @@ Rails.application.routes.draw do
       concern :paginatable do
         get '(page/:page)', action: :index, on: :collection, as: ''
       end
-      resources :products , concerns: :paginatable
+      resources :products do
+         
+          member do
+            get :get_variants
+          end 
+        end
+       
       resources :taxons , concerns: :paginatable
       post '/csv/create_post', to: 'csv#create_post'
       post '/csv/create_product', to: 'csv#create_product'
+      resources :variants
     end
     
     root "homes#index"
     resources :posts 
-    resources :products
+    # resources :products
   end
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register' }
 

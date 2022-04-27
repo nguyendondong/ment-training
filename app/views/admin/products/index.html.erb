@@ -26,7 +26,7 @@
   <%= paginate @products, theme: 'twitter-bootstrap-3' %>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.name,admin_product_path(product) %></td>
+        <td><%= link_to product.name,edit_admin_product_path(product) %></td>
         <td><%= product.sku %></td>
         <td><%= product.description %></td>
         <td><%= product.meta_description %></td>
@@ -41,8 +41,7 @@
          </div>
         <% end %>
         </td>
-        <td><%= link_to 'Edit', edit_admin_product_path(product),:class => "btn btn-success text-white" %></td>
-        <td><%= button_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' },:class  => "btn btn-danger text-white" %></td>
+        <td><%= link_to '<i class="far fa-trash-alt"></i> Destroy'.html_safe, admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' },:class  => "btn btn-danger text-white" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,60 +1,66 @@
 
-<%= form_with(model: [:admin,product], local: true) do |form| %>
-<% if product.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+  <%= form_with(model: [:admin,product], local: true) do |form| %>
+  <div class="row p-5">
+  <% if product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-  <ul>
-    <% product.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <ul>
+      <% product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="col-5">
+      <label>Pictures</label>
+      <div>
+      <% if product.pictures? %>
+      <% product.pictures.each do |p| %>
+        <%= image_tag(p.url)  %>
+        <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe,"#", method: :delete, data: { confirm: 'Are you sure?'},:remote => true,:class  => "btn btn-danger text-white" %></td>
+      <% end %>
+      <% end %>
+      </div>
+    <div class = "pt-5">
+    <%= form.file_field :pictures, multiple: true%>
+    </div>
+  </div>
+  <div class="col-7">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :sku %>
+      <%= form.text_field :sku %>
+    </div>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :meta_description %>
+      <%= form.text_area :meta_description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :meta_keywords %>
+      <%= form.text_field :meta_keywords %>
+    </div>
+    <div class="field">
+      <%= form.label :taxon %>
+      <%= form.select :taxon_ids,Taxon.all.collect {|s| [s.name, s.id]}, {:include_blank => true} , multiple: true, :size => 5  if Taxon.count > 0 %>
+    </div>
+    </div>
+    <div class="actions w-100 text-center">
+      <%= form.submit %>
+    </div>
     <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="field">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-</div>
-
-<div class="field">
-  <%= form.label :sku %>
-  <%= form.text_field :sku %>
-</div>
-
-<div class="field">
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-</div>
-
-<div class="field">
-  <%= form.label :meta_description %>
-  <%= form.text_area :meta_description %>
-</div>
-
-<div class="field">
-  <%= form.label :meta_keywords %>
-  <%= form.text_field :meta_keywords %>
-</div>
-<div class="field">
-  <%= form.label :taxon %>
-  <%= form.select :taxon_ids,Taxon.all.collect {|s| [s.name, s.id]}, {:include_blank => true} , multiple: true, :size => 5  if Taxon.count > 0 %>
-</div>
-<div>
-  <p>
-    <label>Pictures</label>
-    <% if product.pictures? %>
-    <% product.pictures.each do |p| %>
-    <%= image_tag(p.url)  %>
-    <%= form.check_box :remove_picture %>
-    <% end %>
-    <% end %>
-  </p>
-  
-  <%= form.file_field :pictures, multiple: true%>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
-</div>
-<% end %>
