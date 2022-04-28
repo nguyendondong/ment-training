@@ -1,5 +1,5 @@
 <%= form_with(model: [:admin,@product,variant], local: true) do |form| %>
-<div class=" p-5">
+<div class=" row  p-5">
   <% if variant.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(variant.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -11,11 +11,16 @@
     </ul>
   </div>
   <% end %>
-  <div class="pt-5">
-    <%= form.file_field :pictures, multiple: true%>
+  <div class="pt-5 col 5">
+        <%unless variant.pictures.blank? %>
+        <%variant.pictures.each do |p| %>
+          <%=image_tag p.url%>
+        <% end %>
+        <% end %>
+    <%= form.file_field :pictures, multiple: true ,:class =>"p-2"%>
   </div>
-</div>
-<div class="abc">
+
+<div class="col-7">
   <div class="field">
     <%= form.label :sku %>
     <%= form.text_field :sku %>
@@ -35,8 +40,8 @@
     <%= form.label :color %>
     <%= form.text_area :color %>
   </div>
-  <%= form.hidden_field :product_id, value:@product.id %>
-  <div class="actions w-100 text-center">
+</div>
+<div class="actions w-100 text-center">
     <%= form.submit %>
   </div>
 </div>

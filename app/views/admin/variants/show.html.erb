@@ -3,7 +3,11 @@
     <div class="p-3 mb-2">
       <div>
         <strong>Pictures:</strong>
-
+        <%unless @variant.pictures.blank? %>
+        <%@variant.pictures.each do |p| %>
+          <%=image_tag p.url%>
+        <% end %>
+        <% end %>
       </div>
     </div>
   </div>

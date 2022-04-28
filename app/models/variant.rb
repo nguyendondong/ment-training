@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  color      :string
 #  cost_price :string
+#  pictures   :json
 #  size       :string
 #  sku        :string
 #  created_at :datetime         not null
@@ -21,5 +22,6 @@
 #
 class Variant < ApplicationRecord
   belongs_to :product
- 
+  mount_uploaders :pictures, PictureUploader
+  serialize :pictures
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_23_141937) do
+ActiveRecord::Schema.define(version: 2022_04_28_125550) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_141937) do
     t.string "cost_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "pictures"
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 

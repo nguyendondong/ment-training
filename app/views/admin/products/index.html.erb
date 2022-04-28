@@ -22,14 +22,14 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class = "product_table">
   <%= paginate @products, theme: 'twitter-bootstrap-3' %>
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to product.name,edit_admin_product_path(product) %></td>
         <td><%= product.sku %></td>
-        <td><%= product.description %></td>
-        <td><%= product.meta_description %></td>
+        <td class ="name"><%= product.description %></td>
+        <td class ="name"><%= product.meta_description %></td>
         <td><%= product.meta_keywords %></td>
         <td><%= product.taxons.pluck(:name).join(', ')  if product.taxons.present? %></td>
         <td >

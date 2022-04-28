@@ -1,7 +1,7 @@
 class Admin::VariantsController < ApplicationController
   include ApplicationHelper
   layout :dynamic_layout
-  before_action :set_variant, only: %i[ indexshow edit update destroy  ]
+  before_action :set_variant, only: %i[ show edit update destroy  ]
   before_action :check_link
   # GET /variants or /variants.json
   def index
@@ -12,6 +12,7 @@ class Admin::VariantsController < ApplicationController
 
   # GET /variants/1 or /variants/1.json
   def show
+
   end
 
   # GET /variants/new
@@ -72,6 +73,6 @@ class Admin::VariantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def variant_params
-      params.require(:variant).permit(:sku, :color, :size, :cost_price,:product_id)
+      params.require(:variant).permit(:sku, :color, :size, :cost_price,:product_id,{pictures:[]})
     end
 end

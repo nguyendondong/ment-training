@@ -7,9 +7,8 @@
           MENU
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="/en">English</a>
+          <a class="dropdown-item" href="/vi">Vietnamese</a>
         </div>
       </div>
       <div class=" logo">
@@ -19,7 +18,9 @@
         <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
       </form>
       <div class="nav-item" id="account">
-        <a class="nav-link" href="#">Account</a>
+        <a class="nav-link" href="#">
+        <span><i class="fas fa-user-alt"></i><span>
+        <span> Account</span></a>
       </div>
       <div class="nav-item" id="cart">
         <a class="nav-link" href="#">Cart</a>
@@ -116,7 +117,8 @@
           <div class = "product-loop ">
               <%= image_tag product.pictures.first.url,:class => "w-100" if product.pictures? %>
               <%=link_to  product.name ,product_path(product), :class => "name"  %>
-
+              <%=product.variants.first.cost_price  if product.variants.present?%>
+                <%=product.price %>
               <div class = "add_cart">
                  <%= link_to 'Add to Cart',product_path(product) , :class => "btn btn-warning "%> 
           </div>
