@@ -1,0 +1,28 @@
+<section id="collection_index">
+    <div class="collect_header">
+      <div class="title">
+        <h2> <%=link_to taxon.name ,taxon_path(taxon) %> </h2>
+      </div>
+    </div>
+    <div class="collect_taxon">
+      <div class="list_product_row row row-cols-5">
+        <% products.each do |product|%>
+        <div class="product_row col  ">
+          <div class = "product-loop ">
+             <div class = "product_img"> <%= image_tag product.pictures.first.url,:class => "w-100" if product.pictures? %></div>
+              <div class = "product_name"><%=link_to  product.name ,product_path(product), :class => "name"  %></div>
+              <div class = "price_row">
+                <span class = "product_price"><%= product.price.present? ? number_to_currency(product.price, precision: 0,unit: "₫" ,format: "%n %u") : "&nbsp".html_safe  %></span>
+                <span class = "vairiant_price"><%= product.variants.present? ?number_to_currency(product.variants.first.cost_price ,precision: 0,unit: "₫" ,format: "%n %u") :"&nbsp".html_safe %> </span>
+                </div>
+              <div class = "add_cart">
+                 <%= link_to 'Add to Cart',product_path(product) , :class => "btn btn-warning d-flex text-center justify-content-center"%> 
+          </div>
+          </div>
+          
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </section>

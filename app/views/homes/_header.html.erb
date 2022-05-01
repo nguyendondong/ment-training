@@ -1,0 +1,58 @@
+
+  <section class="flex-container" id="header">
+    <div class="navbar navbar-light bg-light">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          MENU
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">xxxxx</a>
+          <a class="dropdown-item" href="#">yyyyy</a>
+          <%= link_to "English", {locale:"en"},{class:'dropdown-item'} %>
+          <%= link_to "Vietnamese", {locale:"vi"},{class:'dropdown-item'} %>
+
+        </div>
+      </div>
+      <div class=" logo">
+        <%= link_to "HOME",root_path,{class:'logo-name', itemprop:"url"} %>
+      </div>
+      <form class="form-inline w-50">
+        <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <div class="nav-item dropdown " id="account">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+         <span><i class="fas fa-user-alt"></i><span>
+        <span> Account</span></a>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <% if current_user %>
+        <%= link_to t('sign_out'), user_signout_path,method: :delete,class: " dropdown-item destroypost "  %>
+    <% else %>
+        <%= link_to t('sign_in'),user_signin_path,class: "dropdown-item" %>
+    <% end %>
+    <%= link_to t('account_info'),user_path(current_user),class: "dropdown-item" if current_user %>
+        </div>
+      </div>
+      <div class="nav-item" id="cart">
+        <a class="nav-link" href="#">Cart</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex-container " id="groupmenu">
+    <div class="navbar navbar-light  bg-light">
+      <div class="nav-item home">
+        <%= link_to "HOME",root_path,{class:'logo-name', itemprop:"url"} %>
+      </div>
+      <div class="nav-item">
+        <%=link_to 'Tất cả sản phẩm' ,taxons_path ,class:'nav-link' %>
+      </div>
+      <%@taxons.each do |taxon|%>
+       <div class="nav-item">
+        <%=link_to taxon.name ,taxon_path(taxon) %>
+      </div>
+      <%end%>
+    </div>
+  </section>

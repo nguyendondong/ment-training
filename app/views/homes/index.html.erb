@@ -1,52 +1,5 @@
 
-  <section class="flex-container" id="header">
-    <div class="navbar navbar-light bg-light">
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          MENU
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/en">English</a>
-          <a class="dropdown-item" href="/vi">Vietnamese</a>
-        </div>
-      </div>
-      <div class=" logo">
-        <h1><a class="logo-name" href="https://beefas.com" itemprop="url">Beefas</a></h1>
-      </div>
-      <form class="form-inline w-50">
-        <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
-      </form>
-      <div class="nav-item" id="account">
-        <a class="nav-link" href="#">
-        <span><i class="fas fa-user-alt"></i><span>
-        <span> Account</span></a>
-      </div>
-      <div class="nav-item" id="cart">
-        <a class="nav-link" href="#">Cart</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="flex-container " id="groupmenu">
-    <div class="navbar navbar-light  bg-light">
-      <div class="nav-item home">
-        <a class="nav-link" href="#">Home</a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="#">Account</a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="#">Cart</a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="#">Account</a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="#">Cart</a>
-      </div>
-    </div>
-  </section>
+   <%= render 'homes/header'  %>
   <section id="collection-banner-header">
     <div id="carouselExampleIndicators" class="carousel slide container container-xs-pd0" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -104,29 +57,7 @@
           <div>
           </div>
   </section>
-  <section id="collection_index">
-    <div class="collect_header">
-      <div class="title">
-        <h2> Thơi trang Nam </h2>
-      </div>
-    </div>
-    <div class="collect_taxon">
-      <div class="list_product_row row">
-        <% @products.each do |product|%>
-        <div class="product_row col-lg-3 col-6 mb-4   ">
-          <div class = "product-loop ">
-              <%= image_tag product.pictures.first.url,:class => "w-100" if product.pictures? %>
-              <%=link_to  product.name ,product_path(product), :class => "name"  %>
-              <%=product.variants.first.cost_price  if product.variants.present?%>
-                <%=product.price %>
-              <div class = "add_cart">
-                 <%= link_to 'Add to Cart',product_path(product) , :class => "btn btn-warning "%> 
-          </div>
-          </div>
-          
-        </div>
-        <% end %>
-      </div>
-
-    </div>
-  </section>
+  <%@taxons.each do |taxon|%>
+     <%= render '/products/collection_product' ,products:taxon.products ,taxon:taxon  unless taxon.products.blank?  %>
+  <% end %>
+  

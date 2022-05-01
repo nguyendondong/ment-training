@@ -29,6 +29,7 @@ class Devise::RegistrationsController < DeviseController
       end
       build_resource(sign_up_params)
       resource.role_id = role_id
+      resource.date = params[:user][:date]
       resource.save
       yield resource if block_given?
       if resource.persisted?
@@ -59,8 +60,9 @@ class Devise::RegistrationsController < DeviseController
     def update
       self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
       prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-  
+      resource.date = params[:user][:date]
       resource_updated = update_resource(resource, account_update_params)
+      
       yield resource if block_given?
       if resource_updated
         set_flash_message_for_update(resource, prev_unconfirmed_email)
@@ -147,7 +149,7 @@ class Devise::RegistrationsController < DeviseController
     end
   
     def sign_up_params
-      devise_parameter_sanitizer.sanitize(:sign_up)
+      devise_parameter_sanitizer.sanitize(:sign_up) 
     end
   
     def account_update_params

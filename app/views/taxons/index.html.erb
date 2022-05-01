@@ -1,0 +1,5 @@
+
+ <%= render 'homes/header'  %>
+<%@taxons.each do |taxon|%>
+     <%= render '/products/collection_product' ,products:taxon.products ,taxon:taxon  unless taxon.products.blank?  %>
+  <% end %>

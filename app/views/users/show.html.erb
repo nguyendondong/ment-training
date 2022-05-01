@@ -1,5 +1,6 @@
 
-
+ <%= render 'homes/header'  %>
+<%= link_to '<i class="fab fa-500px"></i> Edit_infor'.html_safe,edit_user_registration_path(current_user),:class  => "btn btn-success text-white" %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -9,6 +10,3 @@
   <strong>Date:</strong>
   <%= @user.date %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

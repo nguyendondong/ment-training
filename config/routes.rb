@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products 
+  resources :taxons , only: %i[ show index]
+  resources :users,  only: %i[ show ]
   scope "(:locale)", locale: /en|vi/ do
     devise_scope :user  do
       get "user/signin" => "devise/sessions#new"
       post "user/signin" => "devise/sessions#create"
       delete "user/signout" => "devise/sessions#destroy"
     end
+
     namespace :admin do
       resources :posts 
       resources :users
@@ -20,12 +23,10 @@ Rails.application.routes.draw do
       resources :taxons , concerns: :paginatable
       post '/csv/create_post', to: 'csv#create_post'
       post '/csv/create_product', to: 'csv#create_product'
-      
+      # resources :variants 
     end
-    
     root "homes#index"
     resources :posts 
-    # resources :products
   end
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register' }
 

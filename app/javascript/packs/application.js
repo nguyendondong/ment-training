@@ -26,3 +26,9 @@ global.toastr = require("toastr")
         	alert("Maximum file size is 1MB. Please choose an other file!");
         }
     });
+
+
+    //format currency
+    function formatPrice(number){
+        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'VND' }).format(number);
+    }

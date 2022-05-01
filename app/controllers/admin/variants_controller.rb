@@ -30,6 +30,7 @@ class Admin::VariantsController < ApplicationController
   # POST /variants or /variants.json
   def create
     @variant = Variant.new(variant_params)
+    @variant.product_id = params[:product_id]
     respond_to do |format|
       if @variant.save
         format.html { redirect_to admin_product_variants_path , notice: "variant was successfully created." }
@@ -73,6 +74,6 @@ class Admin::VariantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def variant_params
-      params.require(:variant).permit(:sku, :color, :size, :cost_price,:product_id,{pictures:[]})
+      params.require(:variant).permit(:sku,:color, :size, :cost_price,{pictures:[]},:product_id)
     end
 end

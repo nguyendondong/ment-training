@@ -1,0 +1,2 @@
+      <%= render 'homes/header'  %>
+     <%= render '/products/collection_product' ,products:@taxon.products ,taxon:@taxon  unless @taxon.products.blank?  %>

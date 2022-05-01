@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     @users = User.all
+    @taxons= Taxon.all
   end
 
   # GET /users/new

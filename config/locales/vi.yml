@@ -2,6 +2,7 @@ vi:
       user: 'Người dùng'
       name: 'Tên'
       email: 'Địa chỉ mail'
+      date: 'Ngày tháng'
       show: 'Xem chi tiết'
       edit: 'Chinh sửa'
       destroy: 'Xóa'

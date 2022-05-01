@@ -4,8 +4,9 @@ class ProductsController < ApplicationController
     def index
     end
     def show
-
+        @taxons= Taxon.all
     end
+   
     private
         def set_product
         @product = Product.find(params[:id])
