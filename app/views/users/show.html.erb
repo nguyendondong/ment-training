@@ -10,3 +10,34 @@
   <strong>Date:</strong>
   <%= @user.date %>
 </p>
+<div class= "avatar" >
+<div class ="upload_avt">
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="current_avt">
+  <strong>Avatar:</strong>
+  <% if  @user.avatar.present?%>
+  <span><%=image_tag(@user.avatar.url)   %> </span>
+  <span> <label>
+      <%= form.check_box :remove_avatar %>
+      Xóa
+    </label> </span>
+    <%end%>
+   <%= form.file_field :avatar%>
+</div>
+  <div class="actions p-2">
+    <%= form.submit "Change Avt" %>
+  </div>
+<% end %>
+</div> 
+</div>

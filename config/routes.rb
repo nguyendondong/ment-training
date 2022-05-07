@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :products 
   resources :taxons , only: %i[ show index]
-  resources :users,  only: %i[ show ]
+  resources :users
   scope "(:locale)", locale: /en|vi/ do
     devise_scope :user  do
       get "user/signin" => "devise/sessions#new"

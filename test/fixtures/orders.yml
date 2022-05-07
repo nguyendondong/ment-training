@@ -1,0 +1,51 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id               :integer          not null, primary key
+#  adjustment_total :float
+#  completed_at     :datetime
+#  email            :string
+#  item_total       :float
+#  number           :string
+#  payment_state    :string
+#  payment_total    :float
+#  shipment_state   :string
+#  state            :string
+#  total            :float
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :integer          not null
+#
+# Indexes
+#
+#  index_orders_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  user_id  (user_id => users.id)
+#
+
+one:
+  number: MyString
+  item_total: 1.5
+  total: 1.5
+  state: MyString
+  adjustment_total: 1.5
+  completed_at: 2022-05-05 21:05:01
+  payment_total: 1.5
+  shipment_state: MyString
+  payment_state: MyString
+  email: MyString
+
+two:
+  number: MyString
+  item_total: 1.5
+  total: 1.5
+  state: MyString
+  adjustment_total: 1.5
+  completed_at: 2022-05-05 21:05:01
+  payment_total: 1.5
+  shipment_state: MyString
+  payment_state: MyString
+  email: MyString

@@ -12,13 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autofocus: true %>
   </div>
-
   <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= form.label :avatar %><br />
+   <%= form.file_field :avatar%>
+  </div>
+   
+   <div class="field">
+    <%= form.label :date %><br />
+    <%= form.date_field :date, start_year: 1800, end_year: Time.now.year %>
   </div>
   <div class="field">
     <%= form.label :email %>

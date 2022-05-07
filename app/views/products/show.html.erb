@@ -24,6 +24,10 @@
         <strong>Sku:</strong>
         <%= @product.sku %>
       </p>
+      <p>
+        <strong>Price:</strong>
+        <%= number_to_currency(@product.price, precision: 0,unit: "₫" ,format: "%n %u") %>
+      </p>
 
       <p>
         <strong>Description:</strong>
@@ -40,16 +44,23 @@
         <%= @product.meta_keywords %>
       </p>
 
+      <p>
+        <strong>Variants:</strong>
+        <% @product.variants.each do |variant| %>
+        <span><%= radio_button_tag variant.sku, variant.id ,false %><%=variant.sku%></span>
+        <% end %>
+      </p>
+
     </div>
     <div class = "d-flex">
    <div class="quantity-area clearfix">
-											<input type="button" value="-" class="qty-btn">
+											<input type="button" value="-" class="qty-btn quantity-left-minus">
 											<input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
-											<input type="button" value="+" onclick="HRT.All.plusQuantity()" class="qty-btn">
+											<input type="button" value="+" class="qty-btn quantity-right-plus">
 										</div>
     <div class="cart_area">
-      <%= link_to 'Add to Cart',product_path(@product) , :class => "btn btn-warning add_cart"%>
-      <%= link_to 'Add to Cart',product_path(@product) , :class => "btn btn-danger add_cart "%>
+      <%= link_to 'Add to Cart',"#",class: "btn btn-warning btn-add-cart" , data: {name: "#{@product.name}", target: "#modal" }  %>
+      <%= link_to 'Buy Now',"#" , :class => "btn btn-danger btn-add-cart "%>
     </div>
 
     </div>

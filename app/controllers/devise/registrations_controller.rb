@@ -14,13 +14,16 @@ class Devise::RegistrationsController < DeviseController
       end
     end
     def new
+      @taxons= Taxon.all
       build_resource
+      self.resource.addresses.new
       yield resource if block_given?
       respond_with resource
     end
   
     # POST /resource
     def create
+      @taxons= Taxon.all
       create_roles 
       if User.count == 0 
           role_id = Role.find_by_name("admin").id
@@ -28,9 +31,8 @@ class Devise::RegistrationsController < DeviseController
           role_id =  Role.find_by_name("user").id
       end
       build_resource(sign_up_params)
-      resource.role_id = role_id
-      resource.date = params[:user][:date]
-      resource.save
+       resource.role_id = role_id
+       resource.save
       yield resource if block_given?
       if resource.persisted?
         if resource.active_for_authentication?
@@ -51,6 +53,7 @@ class Devise::RegistrationsController < DeviseController
   
     # GET /resource/edit
     def edit
+      @taxons= Taxon.all
       render :edit
     end
   
@@ -58,17 +61,16 @@ class Devise::RegistrationsController < DeviseController
     # We need to use a copy of the resource because we don't want to change
     # the current user in place.
     def update
+      @taxons= Taxon.all
       self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
       prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-      resource.date = params[:user][:date]
       resource_updated = update_resource(resource, account_update_params)
-      
       yield resource if block_given?
       if resource_updated
         set_flash_message_for_update(resource, prev_unconfirmed_email)
         bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
   
-        respond_with resource, location: after_update_path_for(resource)
+        respond_with resource, location: edit_user_registration_path(current_user)
       else
         clean_up_passwords resource
         set_minimum_password_length

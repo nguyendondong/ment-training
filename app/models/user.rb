@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  avatar                 :string
 #  date                   :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
@@ -30,10 +31,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
     has_many :posts , dependent: :destroy, inverse_of: :user
+    has_many :addresses
+    accepts_nested_attributes_for :addresses
     has_and_belongs_to_many :events
     belongs_to :role
-    accepts_nested_attributes_for :posts, allow_destroy: true,
-    reject_if: proc{|attributes| attributes["name"].blank?}
+    mount_uploader :avatar, PictureUploader
 
     
  

@@ -15,10 +15,17 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+
   end
 
   # GET /users/1/edit
   def edit
+    @user.avatar = params[:file] # Assign a file like this, or
+      # like this
+      @user.save!
+      @user.avatar.url # => '/url/to/file.png'
+      @user.avatar.current_path # => 'path/to/file.png'
+      @user.avatar_identifier # => 'file.png'
   end
 
   # POST /users or /users.json
@@ -37,9 +44,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    @taxons = Taxon.all
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { render :show, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,6 +74,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :date,:email,:password)
+      params.require(:user).permit(:name, :date,:email,:password,:avatar,:remove_avatar,address_attributes: [:address1,:address2,:city,:company,:email,:firstname,:lastname,:phone,:sex,:zipcode])
     end
 end

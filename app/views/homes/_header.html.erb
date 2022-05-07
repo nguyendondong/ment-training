@@ -32,11 +32,12 @@
     <% else %>
         <%= link_to t('sign_in'),user_signin_path,class: "dropdown-item" %>
     <% end %>
-    <%= link_to t('account_info'),user_path(current_user),class: "dropdown-item" if current_user %>
+    <%= link_to t('account_info'),edit_user_registration_path(current_user),class: "dropdown-item" if current_user %>
         </div>
       </div>
       <div class="nav-item" id="cart">
-        <a class="nav-link" href="#">Cart</a>
+        <a class="nav-link" href="#">
+        <i class="fas fa-cart-arrow-down"></i> Cart</a>
       </div>
     </div>
   </section>
